@@ -19,6 +19,10 @@ h1, strong {
   color: rgb(84, 0, 153);
 }
 
+span {
+  color:#ff0022
+}
+
 header {
     background-color: #5ed8b3;
     background-image: url("header.jpg");

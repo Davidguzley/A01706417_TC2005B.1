@@ -137,7 +137,7 @@ class Compra{
     }
 }
 
-const huevo = new Compra('huevo','Docena de huevo marca San Juan', 35);
+const huevo = new Compra('Huevo','Docena de huevo marca San Juan', 35);
 const videojuego = new Compra('Halo Infinite', 'Juego para XBOX edicion coleccionista', 3500);
 const telefono = new Compra('Samsung Galaxy S20 FE','Dual SIM 256 GB cloud red 8 GB RAM', 15000);
 

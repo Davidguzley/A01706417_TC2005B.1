@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 5</title>
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<script>  
+    function verifyPassword() {
+        var pw = document.getElementById("pswd").value;
+        var pw2 = document.getElementById("pswd2").value;
+        //comprobar el campo de contraseña vacío
+        if (pw == pw2){
+            if(pw == "") {
+                document.getElementById("message").innerHTML = "**Ingrese una contraseña porfavor";
+                return false;
+             }
+            
+            //validación de la longitud mínima de la contraseña
+             else if(pw.length < 4) {
+                document.getElementById("message").innerHTML = "**La contraseña debe tener almenos 4 caracteres";
+                return false;
+             }
+           
+           //longitud máxima de validación de contraseña
+             else if(pw.length > 10) {
+                document.getElementById("message").innerHTML = "**La contraseña no puede exeder los 10 caracteres";
+                return false;
+             }
+             else {
+                alert("La contraseña es correcta");
+             }
+        }
+        else{
+            document.getElementById("message").innerHTML = "**Las contraseñas no coinciden";
+            return false
+        }
+    } 
+</script>  
+      
+<body>  
+    <h1 >VALIDADOR DE CONTRASEÑAS</h1>   
+      
+    <form onsubmit ="return verifyPassword()">  
+
+    <td> Ingresar contraseña </td>  
+    <input type = "password" id = "pswd" value = ""> <br>
+
+    <td> Verificar contraseña </td> 
+    <input type = "password" id = "pswd2" value = "">
+    <span id = "message"> </span> <br><br>
+       
+    <input type = "submit" value = "Submit">  
+      
+    <button type = "reset" value = "Reset" >Reset</button>
+    </form>   
+</body>
+</html>
