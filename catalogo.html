@@ -48,6 +48,23 @@
     </header>
 
     <main>
+      <div>
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Preguntas</strong>
+            <h3 class="mb-0">Material design</h3>
+            <div class="mb-1 text-muted">feb 20</div>
+            <p class="card-text mb-auto">El Material design es una normativa de diseño, desarrollada por Google enfocado en la visualización del sistema operativo Android,
+              además en la web y en cualquier plataforma.</p>
+            <a href="https://elandroidelibre.elespanol.com/2014/11/que-es-material-design.html" class="stretched-link">Para saber más</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+  
+          </div>
+        </div>
+      </div>
+      
         <div class="card">
             <img src="media/galaxy.jpg" alt="Samsung Galaxy S20 Fe 128 Gb Azul" style="width:100%">
             <h2> Samsung Galaxy S20 Fe 128 Gb Azul </h2>
@@ -77,17 +94,30 @@
             <p>Se la envidia de todos con estos nuevos Air Jordan o sientete como Michael Jordan cuando juegues basquetbol.</p>
             <strong> Ingresar cantidad <input type="number" id="n_jordan" min="0" value = 0> </strong><br>
             <p><button id= "botonJordan" onclick="añadir()">Añadir</button></p>
-        </div>
+        </div><br>
 
         <div id="fin"></div>
+
     </main>
 
-    <footer>
-        <hr>
+    <footer class="container py-5">
         <script src="JS/catalogo.js"></script>
-        <p>Página hecha en HTML5, con <a href="https://code.visualstudio.com/">Visual Estudio Code</a> como editor de texto.</p>
-        <p>El diseño de esta página es de <a href="https://www.w3schools.com/howto/howto_css_product_card.asp">w3schools</a></p>
+            <div class="row">
+              <div class="col-12 col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path></svg>
+                <small class="d-block mb-3 text-muted">© 2021</small>
+              </div>
+              <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="link-secondary" href="https://code.visualstudio.com/">Visual Estudio Code</a></li>
+                  <li><a class="link-secondary" href="https://www.w3schools.com/howto/howto_css_product_card.asp">w3schools</a></li>
+                  <li><a class="link-secondary" href="https://getbootstrap.com/docs/5.0/examples/product/#">Bootstrap</a></li>
+                  <li><a class="link-secondary" href="#">Final resource</a></li>
+                </ul>
+              </div>
+            </div>
     </footer>
-    
+
 </body>
 </html>
