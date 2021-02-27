@@ -3,25 +3,36 @@ console.log('Ya no tuve que detener el servidor');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 const rutasUnidades = require('../routes/unidades');
 
 //Middleware
 app.use(bodyParser.urlencoded({extended: false}));
 
+//Para acceder a los recursos de la carpeta public
+app.use(express.static(path.join(__dirname,'..', 'public')));
+
 app.use('/unidades', rutasUnidades);
 
-app.use('/about', (request, response, next) => {
-    response.send('<h1>¿Quienes somos?</h1> <p>Somos una organización paramilitar dependiente de la ONU. Dedicada en cuerpo y alma a la reconstrucción y protección del mundo, con la función de estudiar y eliminar a los Ángeles. En relación a la cadena de mando, nuestro comandante Gendō Ikari, junto con el vice-comandante Kōzō Fuyutsuki, son quienes dirigen casi en su totalidad la organización, aunque en realidad los verdaderos jefes de NERV son los miembros de la organización SEELE, con Keel Lorentz a la cabeza.</p>'); 
+app.get('/about', (request, response, next) => {
+    response.sendFile(path.join(__dirname, '..', 'views', 'about.html'));
 });
 
-app.use('/location', (request, response, next) => {
-    response.send('<h2>Localización</h2> <p>Estamos localizados en el Geo-Frente (especie de caverna esférica subterránea de la cual el 89% está bajo tierra) de Tokio-3.</p>'); 
+app.get('/location', (request, response, next) => {
+    response.sendFile(path.join(__dirname, '..', 'views', 'location.html'));
+});
+
+app.get('/shop', (request, response, next) => {
+    response.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
 });
 
 app.get('/', (request, response, next) => {
-    response.send('<h1>BIENVENIDO A NERV</h1>'); 
+    response.sendFile(path.join(__dirname, '..', 'views', 'inicio.html'));
 });
 
 app.use( (request, response, next) => {
