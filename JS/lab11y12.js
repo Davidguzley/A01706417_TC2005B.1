@@ -31,7 +31,7 @@ app.get('/shop', (request, response, next) => {
     response.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
 });
 
-app.get('/', (request, response, next) => {
+app.get('/inicio', (request, response, next) => {
     response.sendFile(path.join(__dirname, '..', 'views', 'inicio.html'));
 });
 

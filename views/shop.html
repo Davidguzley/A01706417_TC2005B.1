@@ -13,36 +13,36 @@
 
 <body>
     <header>
-    <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+      <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">NERV SHOP</a>
+          <a class="navbar-brand" href="#">NERV</a>
           <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
     
-          <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+          <div class="navbar-collapse collapse" id="navbarsExample01">
             <ul class="navbar-nav me-auto mb-2">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="inicio">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link" href="shop">Shop</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Información</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="about">Sobre nosotros</a></li>
+                  <li><a class="dropdown-item" href="location">Ubicación</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Unidades EVA</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                  <li><a class="dropdown-item" href="unidades">Lista actual</a></li>
+                  <li><a class="dropdown-item" href="unidades/nueva-unidad">Agregar nueva unidad</a></li>
                 </ul>
               </li>
             </ul>
-            <form>
-              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </form>
           </div>
         </div>
       </nav>
@@ -88,10 +88,12 @@
         </div>
         
         <div class="card">
-            <img src="trajeAsuka.jpg" alt="Traje de Asuka Langley" style="width:100%">
+            <img src="julioAsuka.png" alt="Traje de Asuka Langley" style="width:100%">
             <h2> Traje de Asuka Langley </h2>
             <p class="price"> $2,500 </p>
-            <p> Viste como un verdadero heroe y adquiere ya el traje de uno de los tres primeros niños elegidos para pilotar unidades EVA.</p>
+            <p> Viste como un verdadero heroe y adquiere ya el traje de uno de los tres primeros niños elegidos para pilotar unidades EVA.
+                (modelo no incluido)
+            </p>
             <strong> Ingresar cantidad <input type="number" id="n_traje" min="0" value = 0> </strong><br>
             <p><button id= "botonJordan" onclick="añadir()">Añadir</button></p>
         </div><br>
