@@ -19,12 +19,16 @@ app.use(express.static(path.join(__dirname,'..', 'public')));
 
 app.use('/unidades', rutasUnidades);
 
-app.get('/about', (request, response, next) => {
+app.get('/preguntas', (request, response, next) => {
+    response.render('preguntas');
+});
+
+app.get('/acerca', (request, response, next) => {
     response.render('about');
 });
 
-app.get('/location', (request, response, next) => {
-    response.render('location');
+app.get('/ubicacion', (request, response, next) => {
+    response.render('ubicacion');
 });
 
 app.get('/shop', (request, response, next) => {
