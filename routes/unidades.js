@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const filesystem = require('fs');
 const path = require('path');
+//const unidadesController = require('../controllers/unidades_controller');
 
 class EVA{
     constructor(nombre, children, pais, imagen){
@@ -29,7 +30,7 @@ const EVAS = [unidad1, unidad2, unidad3];
 router.use(express.static(path.join(__dirname,'..', 'public')));
 
 router.get('/nueva-unidad', (request, response, next) => {
-    response.sendFile(path.join(__dirname, '..', 'views', 'nuevaUnidad.html')); 
+    response.render('nuevaUnidad'); 
 });
 
 router.post('/nueva-unidad', (request, response, next) => {

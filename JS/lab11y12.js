@@ -20,19 +20,19 @@ app.use(express.static(path.join(__dirname,'..', 'public')));
 app.use('/unidades', rutasUnidades);
 
 app.get('/about', (request, response, next) => {
-    response.sendFile(path.join(__dirname, '..', 'views', 'about.html'));
+    response.render('about');
 });
 
 app.get('/location', (request, response, next) => {
-    response.sendFile(path.join(__dirname, '..', 'views', 'location.html'));
+    response.render('location');
 });
 
 app.get('/shop', (request, response, next) => {
-    response.sendFile(path.join(__dirname, '..', 'views', 'shop.html'));
+    response.render('shop');
 });
 
-app.get('/inicio', (request, response, next) => {
-    response.sendFile(path.join(__dirname, '..', 'views', 'inicio.html'));
+app.get('/', (request, response, next) => {
+    response.render('inicio');
 });
 
 app.use( (request, response, next) => {

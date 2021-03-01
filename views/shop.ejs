@@ -1,0 +1,59 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/navbar.ejs') %>
+
+    <main>
+      <div>
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Preguntas</strong>
+            <h3 class="mb-0">Material design</h3>
+            <div class="mb-1 text-muted">feb 20</div>
+            <p class="card-text mb-auto">El Material design es una normativa de diseño, desarrollada por Google enfocado en la visualización del sistema operativo Android,
+              además en la web y en cualquier plataforma.</p>
+            <a href="https://elandroidelibre.elespanol.com/2014/11/que-es-material-design.html" class="stretched-link">Para saber más</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
+  
+          </div>
+        </div>
+      </div>
+      
+        <div class="card">
+            <img src="funko.jpg" alt="Funko Pop Animation: Evangelion - 6 Eva Unit 01" style="width:100%">
+            <h2> Funko Pop Animation: Evangelion - 6 Eva Unit 01 </h2>
+            <p class="price" > De $1,200 a $899 </p>
+            <p> Añade a tu coleccion este Funko Pop que a ninguna persona que le gusta Evangelion le puede faltar
+              ,por un precio increible que no puedes dejar atras.</p>
+            <strong> Ingresar cantidad <input type="number" id="n_funko" min="0" value = 0> </strong><br>
+            <p><button id= "botonGalaxy" onclick="añadir()">Añadir</button></p>
+        </div>
+        
+        <div class="card">
+            <img src="tamagochi.jpg" alt="Tamagotchi X Evangelion - Eva 00" style="width:100%">
+            <h2> Tamagotchi X Evangelion - Eva 00 </h2>
+            <p class="price"> De $2,500 a $1,750 </p>
+            <p> Increible olaboración entre Tamagotchi y Evangelion.
+                Porque las unidades EVA tambien necesitan de quien las cuide, adquiere ya este increible juguete y pasa horas de diversion.
+            </p>
+            <strong> Ingresar cantidad <input type="number" id= "n_tamagochi" min="0" value = 0> </strong><br>
+            <p><button id= "botonGuante" onclick="añadir()">Añadir</button></p>
+        </div>
+        
+        <div class="card">
+            <img src="julioAsuka.png" alt="Traje de Asuka Langley" style="width:100%">
+            <h2> Traje de Asuka Langley </h2>
+            <p class="price"> $2,500 </p>
+            <p> Viste como un verdadero heroe y adquiere ya el traje de uno de los tres primeros niños elegidos para pilotar unidades EVA.
+                (modelo no incluido)
+            </p>
+            <strong> Ingresar cantidad <input type="number" id="n_traje" min="0" value = 0> </strong><br>
+            <p><button id= "botonJordan" onclick="añadir()">Añadir</button></p>
+        </div><br>
+
+        <div id="fin"></div>
+
+    </main>
+    
+<%- include('partials/footer.ejs') %>
