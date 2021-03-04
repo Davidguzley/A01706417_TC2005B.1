@@ -1,0 +1,150 @@
+/*ELIMINACION*/
+drop TABLE entregan
+drop TABLE materiales
+drop TABLE proyectos
+drop TABLE Proveedores
+
+SET DATEFORMAT dmy
+
+
+/*CREAR TABLAS*/
+/*IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Materiales')*/
+CREATE TABLE Materiales
+(
+  Clave numeric(5) not null,
+  Descripcion varchar(50),
+  Costo numeric (8,2)
+)
+
+/*IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Proveedores')*/
+CREATE TABLE Proveedores
+(
+  RFC char(13) not null,
+  RazonSocial varchar(50)
+)
+
+/*IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Proyectos')*/
+CREATE TABLE Proyectos
+(
+  Numero numeric(5) not null,
+  Denominacion varchar(50)
+)
+
+/*IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Entregan')*/
+CREATE TABLE Entregan
+(
+  Clave numeric(5) not null,
+  RFC char(13) not null,
+  Numero numeric(5) not null,
+  Fecha DateTime not null,
+  Cantidad numeric (8,2)
+)
+
+
+/*POBLACION*/
+BULK INSERT a1706417.a1706417.[Materiales]
+   FROM 'e:\wwwroot\rcortese\materiales.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+/*select * from Materiales*/
+
+BULK INSERT a1706417.a1706417.[Proveedores]
+   FROM 'e:\wwwroot\rcortese\proveedores.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+/*select * from Proveedores*/
+
+BULK INSERT a1706417.a1706417.[Proyectos]
+   FROM 'e:\wwwroot\rcortese\proyectos.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+/*select * from Proyectos*/
+
+BULK INSERT a1706417.a1706417.[Entregan]
+   FROM 'e:\wwwroot\rcortese\entregan.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+/*select * from Entregan*/
+
+/* EJERCICIO 2 */
+INSERT INTO Materiales values(1000, 'xxx', 1000)
+Delete from Materiales where Clave = 1000 and Costo = 1000
+ALTER TABLE Materiales add constraint llaveMateriales PRIMARY KEY (Clave)
+INSERT INTO Materiales values(1000, 'xxx', 1000)
+ALTER TABLE Proveedores add constraint llaveProveedores PRIMARY KEY (RFC)
+ALTER TABLE Proyectos add constraint llaveProyectos PRIMARY KEY (Numero)
+ALTER TABLE Entregan add constraint llaveEntregan PRIMARY KEY (Clave, RFC, Numero, Fecha)
+/*
+¿Qué ocurrió? Al especificar la llave primaria de Materiales no es posible realizar la ultima insercion
+¿Qué información muestra esta consulta? muestra informacion del constraint que realizamos donde esta la llave primaria de Materiales
+¿Qué sentencias utilizaste para definir las llaves primarias? ALTER TABLE Tabla add constraint llaveTabla PRIMARY KEY (llave)
+¿Qué sentencias utilizaste para definir este constrait? ALTER TABLE Entregan add constraint llaveEntregan PRIMARY KEY (Clave, RFC, Numero, Fecha)
+*/
+
+
+/* EJERCICIO 3 */
+INSERT INTO entregan values (0, 'xxx', 0, '1-jan-02', 0) ;
+/*
+¿Qué particularidad observas en los valores para clave, rfc y numero? que los tres se encuentran en entregan
+¿Cómo responde el sistema a la inserción de este registro? lo inserta correctamente
+*/
+Delete from Entregan where Clave = 0
+ALTER TABLE entregan add constraint cfentreganclave foreign key (clave) references materiales(clave);
+/*
+¿Qué significa el mensaje que emite el sistema? Que la insercion no se puede realizar debido a la llave foranea
+¿Qué significado tiene la sentencia anterior? Que no permite gracias a que debe ser una clave existente en la tabla materiales
+*/
+ ALTER TABLE entregan add constraint cfentreganRFC foreign key (RFC) references Proveedores(RFC);
+ ALTER TABLE entregan add constraint cfentregannumero foreign key (Numero) references Proyectos(Numero);
+ sp_helpconstraint Entregan
+ /*
+¿Qué significan las columnas de esas consultas? las propiedades o informacion de cada una de las llaves de Entregan.
+*/
+
+/* EJERCICIO 4 */
+INSERT INTO entregan values (1000, 'AAAA800101', 5000, GETDATE(), 0);
+/*
+¿Qué uso se le está dando a GETDATE()?
+Devuelve la marca de tiempo del sistema de la base de datos actual como un valor de fecha y hora sin el desplazamiento de la zona horaria de la base de datos
+
+¿Tiene sentido el valor del campo de cantidad?
+no porque debe haber almenos una cantidad para poder entregar
+*/
+ Delete from Entregan where Cantidad = 0
+ ALTER TABLE entregan add constraint cantidad check (cantidad > 0) ;
+ /*
+¿Cómo responde el sistema?
+The INSERT statement conflicted with the CHECK constraint "cantidad". The conflict occurred in database "a1706417", table "a1706417.Entregan", column 'Cantidad'.
+
+¿Qué significa el mensaje?
+Que no se inserto debido a la resriccion que hicimos.
+*/
+
+/*
+¿Que ssignifica integridad referencial?
+La integridad referencial es un sistema de reglas que utilizan la mayoría de las bases de datos relacionales para asegurarse que los registros de tablas relacionadas son válidos
+y que no se borren o cambien datos relacionados de forma accidental produciendo errores de integridad.
+*/
+
+/*
+Referencia: https://www.aulaclic.es/sql/b_8_1_1.htm
+*/

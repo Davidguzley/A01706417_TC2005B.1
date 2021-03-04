@@ -1,0 +1,85 @@
+/*
+PREGUNTAS
+¿Que muestra la instrucción? Muestra cada uno de las epecificaciones de las columnas de la tabla
+¿Qué efecto tuvo esta acción? Que genero todo desde una sola ejecucion
+¿Qué utilidad tiene esta manera de ejecutar los comandos de SQL? Que no pierdes tiempo ejecutando comando por comando en un sql
+¿Qué relación tienen con las tablas de la base de datos? Que en ellos contienen las tuplas necesarias para poblar cada una de las tablas
+¿Qué relación tiene el contenido de este archivo (materiales.sql) con el formato en que se encuentran los datos en el archivo materiales.csv?
+En que el el csv contiene cada una de sus tuplas registradas con un formato para ser insertadas en la tabla.
+¿Qué sucedió? Se muestra todas las tuplas de la tabla materiales en results.
+*/
+
+CREATE TABLE Materiales
+(
+  Clave numeric(5),
+  Descripcion varchar(50),
+  Costo numeric(8,2)
+)
+
+CREATE TABLE Proveedores
+(
+  RFC varchar(15),
+  RazonSocial varchar(50)
+)
+
+CREATE TABLE Proyectos
+(
+  Numero numeric(8),
+  Denominacion varchar(50),
+)
+
+CREATE TABLE Entregan
+(
+  Clave numeric(5),
+  RFC varchar(15),
+  Numero numeric(8),
+  Fecha date,
+  Cantidad numeric(6)
+)
+
+BULK INSERT a1706417.a1706417.[Materiales]
+   FROM 'e:\wwwroot\rcortese\materiales.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+select * from Materiales
+
+BULK INSERT a1706417.a1706417.[Proveedores]
+   FROM 'e:\wwwroot\rcortese\proveedores.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+select * from Proveedores
+
+BULK INSERT a1706417.a1706417.[Proyectos]
+   FROM 'e:\wwwroot\rcortese\proyectos.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+select * from Proyectos
+
+BULK INSERT a1706417.a1706417.[Entregan]
+   FROM 'e:\wwwroot\rcortese\entregan.csv'
+   WITH
+      (
+         CODEPAGE = 'ACP',
+         FIELDTERMINATOR = ',',
+         ROWTERMINATOR = '\n'
+      )
+
+select * from Entregan
+Drop table Entregan
+sp_help materiales
+SET DATEFORMAT dmy

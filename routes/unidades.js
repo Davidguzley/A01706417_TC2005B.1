@@ -10,6 +10,8 @@ router.get('/nueva-unidad', unidadesController.getNuevaUnidad);
 
 router.post('/nueva-unidad', unidadesController.postNuevaUnidad);
 
+router.get('/:unidad_num', unidadesController.getUnidad);
+
 router.get('/', unidadesController.get);
 
 module.exports = router;

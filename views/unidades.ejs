@@ -6,8 +6,8 @@
         <h1 class= "bg-danger text-white">UNIDADES</h1>
         <ul>
             <% for (let EVA of lista_EVAS) { %>
-                <li><h3 class= "bg-primary"> Unidad EVA <%= EVA.nombre %> pilotada por <%= EVA.children %> de <%= EVA.pais %>.</h3>
-                    <img src="<%= EVA.imagen %>" alt="<%= EVA.imagen %>" style="width:40%">
+                <li><h3 class= "bg-primary"> Unidad EVA <%= EVA.NumUnidad %> pilotada por <%= EVA.Children %> de <%= EVA.Pais %>.</h3>
+                    <img src="<%= EVA.Imagen %>" alt="<%= EVA.Imagen %>" style="width:40%">
                 </li>
             <% } %>
         </ul>
