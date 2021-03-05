@@ -432,6 +432,35 @@
             </ol>
         </section>
 
+        <section>
+            <hr>
+            <h2> Laboratorio 17: Interacción con la base de datos </h2>
+            <ol>
+                <li>
+                    ¿Qué ventajas tiene escribir el código SQL únicamente en la capa del modelo?
+                    <ul>
+                        <li>
+                            Manejas codigo por capas lo cual permite no mesclar contenidos y lenguajes de programacion, evitando de esta manera el codigo espaggeti.
+                            Esto beneficia en la conexion de cada uno de los archivos ya que todos se pueden comunicar entre ellos, de esta manera se puede reutilizar mucho codigo.
+                        </li>
+                    </ul>
+                    <br>
+                </li>
+                <li>
+                    ¿Qué es SQL injection y cómo se puede prevenir?
+                    <ul>
+                        <li>
+                            El SQLinjection ocurre cuando un usuario por medio del uso de nuestra aplicacion envia codigo SQL en una entrada,
+                            afectando la base de datos y poniendo en peligro el sistema. Para poder prevenirlo tenemos que poner restrciones a los valores que recibimos del usuario para hacer consultas con la base de datos 
+                            y no tenga permitido insertar codigo.
+                            Un ejemplo de lo mencionado anteriormente es el VALUES (?).
+                        </li>
+                    </ul>
+                        <br>
+                </li>
+            </ol>
+        </section>
+
     </main>
 
 <%- include('partials/footer.ejs') %>

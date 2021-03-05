@@ -14,8 +14,8 @@ module.exports = class EVA{
         return (`Unidad EVA ${this.NumUnidad} pilotada por ${this.Children} de ${this.Pais}.`);
     }
 
-    save(){
-        return db.execute('INSERT INTO unidades (NumUnidad, Children, Pais, Imagen) VALUES (?, ?)',
+    save() {
+        return db.execute('INSERT INTO unidades (NumUnidad, Children, Pais, Imagen) VALUES (?, ?, ?, ?)',
             [this.NumUnidad, this.Children, this.Pais, this.Imagen]
         );
     }
