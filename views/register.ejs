@@ -1,0 +1,25 @@
+<%- include('partials/head.ejs') %>
+
+<%- include('partials/navbar.ejs') %>
+
+<main class="container">
+    <h1 class= "text-danger">REGISTRARSE</h1>
+    <form action="/users/register" method="POST" class="mb-3">
+        <div class="mb-3">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            <label for="nombre" class="form-label">Nombre completo</label>
+            <input type="text" class="form-control" id="nombre" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control" id="usuario" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-dark">Ingresar</button>
+      </form>
+</main>
+
+<%- include('partials/footer.ejs') %>

@@ -4,9 +4,14 @@ console.log('Ya no tuve que detener el servidor');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const app = express();
+
+const cookieParser = require('cookie-parser');
+
+const session = require('express-session');
+
+const csrf = require('csurf');
+const csrfProtection = csrf();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -22,12 +27,16 @@ app.use(express.static(path.join(__dirname,'..', 'public')));
 
 //Para acceder a los valores de las cookies
 app.use(cookieParser());
+
 //Para trabajar con sesiones
 app.use(session({
     secret: 'kñsjdnrkncllñkm', 
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió 
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
+
+//Para estar protegido ante CSRF
+app.use(csrfProtection);
 
 app.use('/unidades', rutasUnidades);
 

@@ -6,6 +6,7 @@
         <h1 class= "bg-danger text-white">Asigna una nueva unidad Evangelion</h1>
         <img src="media/eva.png" alt="EVA" style="width:30%" class= "text-danger text-center">
         <form action="nueva-unidad" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <input type="text" name="NumUnidad" placeholder="Numero de EVA"><br>
             <input type="text" name="Children" placeholder="Nombre del niño elegido"><br>
             <input type="text" name="Pais" placeholder="Pais de origen del niño"><br>

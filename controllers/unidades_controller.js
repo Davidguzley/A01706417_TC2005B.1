@@ -3,6 +3,7 @@ const filesystem = require('fs');
 
 exports.getNuevaUnidad = (request, response, next) => {
     response.render('nuevaUnidad', {
+        csrfToken: request.csrfToken(),
         isLoggedIn: request.session.isLoggedIn === true ? true : false
     });
 };
@@ -30,6 +31,12 @@ exports.getUnidad = (request, response, next) => {
         .catch(err => {
             console.log(err);
         });
+};
+
+exports.getRegister = (request, response, next) => {
+    response.render('register', {
+        isLoggedIn: request.session.isLoggedIn === true ? true : false
+    });
 };
 
 exports.get = (request, response, next) => {
