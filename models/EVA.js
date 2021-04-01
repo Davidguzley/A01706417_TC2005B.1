@@ -10,7 +10,6 @@ module.exports = class EVA{
     }
 
     toString(){
-       console.log(`Unidad EVA ${this.NumUnidad} pilotada por ${this.Children} de ${this.Pais}.`);
         return (`Unidad EVA ${this.NumUnidad} pilotada por ${this.Children} de ${this.Pais}.`);
     }
 

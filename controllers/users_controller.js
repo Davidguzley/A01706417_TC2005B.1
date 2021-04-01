@@ -12,12 +12,15 @@ exports.getLogin = (request, response, next) => {
 exports.postLogin = (request, response, next) => {
     request.session.error = "";
     const username = request.body.usuario;
+    console.log(username);
     Usuario.fetchOne(username)
         .then(([rows, fieldData]) => {
             if (rows.length < 1) {
                 request.session.error = "El usuario y/o contraseña son incorrectas";
                 response.redirect('/users/login');
             } else {
+                console.log(request.body.password);
+                console.log(rows[0].password);
                 bcrypt.compare(request.body.password, rows[0].password)
                     .then(doMatch => {
                         if (doMatch) {
@@ -61,5 +64,4 @@ exports.postRegister = (request, response, next) => {
             request.session.usuario = request.body.username;
             response.redirect('/');
         }).catch(err => console.log(err));
-
 }

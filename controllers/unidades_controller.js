@@ -9,7 +9,18 @@ exports.getNuevaUnidad = (request, response, next) => {
 };
 
 exports.postNuevaUnidad = (request, response, next) => {
-    var nueva_unidad = new EVA(request.body.NumUnidad, request.body.Children, request.body.Pais, "media/evaNuevo.jpg");
+    console.log("Añadiendo nueva unidad...");
+    console.log(request.body.NumUnidad);
+    
+    const image = request.file;
+    console.log(image);
+
+    if(!image) {
+        console.error('Error al subir la imagen');
+        return response.status(422).redirect('/');
+    }
+
+    var nueva_unidad = new EVA(request.body.NumUnidad, request.body.Children, request.body.Pais, image.filename);
     filesystem.appendFileSync('lab11y12.txt', nueva_unidad.toString() + '\n');
     nueva_unidad.save()
         .then(() => {
@@ -31,12 +42,6 @@ exports.getUnidad = (request, response, next) => {
         .catch(err => {
             console.log(err);
         });
-};
-
-exports.getRegister = (request, response, next) => {
-    response.render('register', {
-        isLoggedIn: request.session.isLoggedIn === true ? true : false
-    });
 };
 
 exports.get = (request, response, next) => {

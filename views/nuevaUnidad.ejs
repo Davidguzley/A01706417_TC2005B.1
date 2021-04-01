@@ -2,15 +2,28 @@
 
 <%- include('partials/navbar.ejs') %>
 
-    <main>
-        <h1 class= "bg-danger text-white">Asigna una nueva unidad Evangelion</h1>
-        <img src="media/eva.png" alt="EVA" style="width:30%" class= "text-danger text-center">
-        <form action="nueva-unidad" method="POST">
+    <main class="container">
+        <h1 class= "bg-danger text-white text-center">Asigna una nueva unidad Evangelion</h1>
+        <img src="media/eva.png" alt="EVA" style="width:30%">
+        <form action="nueva-unidad?_csrf=<%=csrfToken%>" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
-            <input type="text" name="NumUnidad" placeholder="Numero de EVA"><br>
-            <input type="text" name="Children" placeholder="Nombre del niño elegido"><br>
-            <input type="text" name="Pais" placeholder="Pais de origen del niño"><br>
-            <input type="submit" value="Guardar EVA">
+            <div class="mb-3">
+                <label for="NumUnidad" class="form-label">Numero de EVA:</label>
+                <input type="text" class="form-control" id="NumUnidad" name="NumUnidad">
+            </div>
+            <div class="mb-3">
+                <label for="Children" class="form-label">Nombre del niño elegido:</label>
+                <input type="text" class="form-control" id="Children" name="Children">
+            </div>
+            <div class="mb-3">
+                <label for="Pais" class="form-label">Pais de origen del niño:</label>
+                <input type="text" class="form-control" id="Pais" name="Pais">
+            </div>
+            <div class="mb-3">
+                <label for="Imagen" class="form-label">Imagen:</label>
+                <input class="form-control" type="file" id="Imagen" name="Imagen">
+            </div>
+            <input type="submit" class="btn btn-dark" value="Guardar EVA">
         </form><br>
     </main>
 

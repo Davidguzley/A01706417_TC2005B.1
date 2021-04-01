@@ -7,6 +7,9 @@ const isAuth = require('../util/is-auth');
 //Para acceder a los recursos de la carpeta public
 router.use(express.static(path.join(__dirname,'..', 'public')));
 
+//Para acceder a los recursos de la carpeta uploads
+router.use(express.static(path.join(__dirname,'..', 'uploads')));
+
 router.get('/nueva-unidad', isAuth, unidadesController.getNuevaUnidad);
 
 router.post('/nueva-unidad', isAuth, unidadesController.postNuevaUnidad);
