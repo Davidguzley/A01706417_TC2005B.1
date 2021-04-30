@@ -22,7 +22,9 @@ const rutasUsers = require('../routes/users')
 
 //Middleware
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
+//Para carga de archivos
 const multer = require('multer');
 
 //fileStorage: Es nuestra constante de configuración para manejar el almacenamiento

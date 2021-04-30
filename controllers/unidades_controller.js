@@ -44,14 +44,28 @@ exports.getUnidad = (request, response, next) => {
         });
 };
 
+exports.postBuscar = (request, response, next) => {
+    console.log(request.body);
+    console.log(request.body.valor_busqueda);
+    const niño = request.body.valor_busqueda;
+    EVA.fetchByName(niño)
+        .then(([rows, fieldData]) => {
+            console.log(rows);
+            response.status(200).json(rows);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 exports.get = (request, response, next) => {
     //Con cookie-parser
     console.log(request.cookies);
-    console.log(request.cookies.ultima_unidad);
 
     EVA.fetchAll()
         .then(([rows, fieldData]) => {
-            response.render('unidades', { 
+            response.render('unidades', {
+                csrfToken: request.csrfToken(),
                 lista_EVAS: rows, 
                 isLoggedIn: request.session.isLoggedIn === true ? true : false
             });

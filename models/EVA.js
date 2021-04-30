@@ -26,4 +26,8 @@ module.exports = class EVA{
     static fetchOne(NumUnidad) {
         return db.execute('SELECT * FROM unidades WHERE NumUnidad=?', [NumUnidad]);
     }
+
+    static fetchByName(Children) {
+        return db.execute("SELECT * FROM unidades WHERE `Children` LIKE ? ", ['%'+Children+'%']);
+    }
 }

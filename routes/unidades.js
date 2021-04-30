@@ -14,7 +14,9 @@ router.get('/nueva-unidad', isAuth, unidadesController.getNuevaUnidad);
 
 router.post('/nueva-unidad', isAuth, unidadesController.postNuevaUnidad);
 
-router.get('/:unidad_num', isAuth, unidadesController.getUnidad);
+router.get('/:unidad_num', unidadesController.getUnidad);
+
+router.post('/buscar', unidadesController.postBuscar);
 
 router.get('/', unidadesController.get);
 
